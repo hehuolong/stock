@@ -6,12 +6,14 @@ import libs.common as common
 import sys
 import time
 import pandas as pd
-import tushare as ts
+import tushare as t1
 from sqlalchemy.types import NVARCHAR
 from sqlalchemy import inspect
 import datetime
 import MySQLdb
 
+t1.set_token(common.get_tushare_token())
+ts = t1.pro_api()
 
 ####### 3.pdf 方法。宏观经济数据
 # 接口全部有错误。只专注股票数据。
