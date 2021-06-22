@@ -23,7 +23,7 @@ MYSQL_PWD = os.environ.get('MYSQL_PWD') if (os.environ.get('MYSQL_PWD') != None)
 MYSQL_DB = os.environ.get('MYSQL_DB') if (os.environ.get('MYSQL_DB') != None) else "stock_data"
 
 print("MYSQL_HOST :", MYSQL_HOST, ",MYSQL_PORT :", MYSQL_PORT, ",MYSQL_USER :", MYSQL_USER, ",MYSQL_DB :", MYSQL_DB)
-MYSQL_CONN_URL = "mysql+mysqldb://" + MYSQL_USER + ":" + MYSQL_PWD + "@" + MYSQL_HOST + ":" + MYSQL_PORT + "/" + MYSQL_DB + "?charset=utf8"
+MYSQL_CONN_URL = "mysql+mysqldb://" + MYSQL_USER + ":" + MYSQL_PWD + "@" + MYSQL_HOST + ":" + str(MYSQL_PORT) + "/" + MYSQL_DB + "?charset=utf8"
 print("MYSQL_CONN_URL :", MYSQL_CONN_URL)
 
 # 定义 获得 token 方法
@@ -42,7 +42,7 @@ def engine():
 
 
 def engine_to_db(to_db):
-    MYSQL_CONN_URL_NEW = "mysql+mysqldb://" + MYSQL_USER + ":" + MYSQL_PWD + "@" + MYSQL_HOST + ":" + MYSQL_PORT + "/" + to_db + "?charset=utf8"
+    MYSQL_CONN_URL_NEW = "mysql+mysqldb://" + MYSQL_USER + ":" + MYSQL_PWD + "@" + MYSQL_HOST + ":" + str(MYSQL_PORT) + "/" + to_db + "?charset=utf8"
     engine = create_engine(
         MYSQL_CONN_URL_NEW,
         encoding='utf8', convert_unicode=True)
