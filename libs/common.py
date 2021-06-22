@@ -52,7 +52,7 @@ def engine_to_db(to_db):
 # 通过数据库链接 engine。
 def conn():
     try:
-        db = MySQLdb.connect(MYSQL_HOST, MYSQL_USER, MYSQL_PWD, MYSQL_DB, charset="utf8")
+        db = MySQLdb.connect(MYSQL_HOST, MYSQL_USER, MYSQL_PWD, MYSQL_DB, MYSQL_PORT,charset="utf8")
         # db.autocommit = True
     except Exception as e:
         print("conn error :", e)
