@@ -36,14 +36,14 @@ class Application(tornado.web.Application):
             static_path=os.path.join(os.path.dirname(__file__), "static"),
             xsrf_cookies=False,  # True,
             # cookie加密
-            cookie_secret="027bb1b670eddf0392cdda8709268a17b58b7",
+            cookie_secret="027bb1b670eddf0392cdda8709268a17b58b8",
             debug=True,
         )
         super(Application, self).__init__(handlers, **settings)
         # Have one global connection to the blog DB across all handlers
         self.db = torndb.Connection(
             charset="utf8", max_idle_time=3600, connect_timeout=1000,
-            host=common.MYSQL_HOST, database=common.MYSQL_DB,
+            host=common.MYSQL_HOST + ":" + str(common.MYSQL_PORT), database=common.MYSQL_DB,
             user=common.MYSQL_USER, password=common.MYSQL_PWD)
 
 
